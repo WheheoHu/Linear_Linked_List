@@ -8,7 +8,7 @@ class Linear_Linked_List
 public:
 	Linear_Linked_List();
 	Linear_Linked_List(int n);
-	~Linear_Linked_List() {DestoryList()};
+	~Linear_Linked_List() {DestoryList()}
 	void InitList(int n);
 	void DestoryList(); 
 	bool ListEmpty();
@@ -30,7 +30,7 @@ private:
 template<class T>
 inline Linear_Linked_List<T>::Linear_Linked_List()
 {
-	std::cout << "Please initalize list manually!(Use InitList)" << endl;
+	std::cout << "Please initalize list manually!(Use InitList)" << std::endl;
 }
 
 template<class T>
