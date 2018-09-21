@@ -2,5 +2,6 @@
 #include "linearlinkedlist.h"
 
 int main() {
-  
+	
+	system("pause");
 }
