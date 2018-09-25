@@ -15,7 +15,7 @@ public:
 	int ListLength();
 	T GetElem(int location);
 	int locateElem(T elem);
-	void ListInsert(int location, T elem);
+	int ListInsert(int location, T elem);
 	int ListDelete(int location, T& elem);
 
 private:
@@ -58,7 +58,7 @@ inline void Linear_Linked_List<T>::DestoryList()
 	while (p)
 	{
 		Node *q = p;
-		delete p;
+		free(p);
 		q = p;
 	}
 }
@@ -73,7 +73,7 @@ template<class T>
 inline int Linear_Linked_List<T>::ListLength()
 {
 	int listlenght = 0;
-	T *p = head;
+	Node *p = head;
 	while (p!=NULL)
 	{
 		p = p->next;
@@ -85,7 +85,7 @@ inline int Linear_Linked_List<T>::ListLength()
 template<class T>
 inline T Linear_Linked_List<T>::GetElem(int location)
 {
-	T *p = head;
+	Node *p = head;
 	for (int i = 0; i < location&&p->next!=NULL; i++)
 	{
 		p = p->next;
@@ -97,7 +97,7 @@ template<class T>
 inline int Linear_Linked_List<T>::locateElem(T elem)
 {
 	T *targetNode = head;
-	int location = 1
+	int location = 1;
 	while (targetNode->date != elem&&targetNode->next!=NULL)
 	{
 		targetNode=targetNode->next;
@@ -107,29 +107,34 @@ inline int Linear_Linked_List<T>::locateElem(T elem)
 }
 
 template<class T>
-inline void Linear_Linked_List<T>::ListInsert(int location, T elem)
+inline int Linear_Linked_List<T>::ListInsert(int location, T elem)
 {
-	T InsertNode = Node(elem);
+	Node InsertNode = Node(elem);
 	if (location==1)
 	{
 		InsertNode.next = head;
+		
+		head = &InsertNode;
+		return 1;
 	}
-	if (location==ListLength())
+	if (location>=ListLength())
 	{
-		T *lastNode = head;
-		for (int  i = 0; i < ListLength(); i++)
+		Node *lastNode = head;
+		for (int  i = 0; i < ListLength()-1; i++)
 		{
 			lastNode = lastNode->next;
 		}
 		lastNode->next = &InsertNode;
+		return 1;
 	}
-	T *PreNode = head;
-	for (int  i = 0; i < location; i++)
+	Node *PreNode = head;
+	for (int  i = 0; i < location-1; i++)
 	{
 		PreNode=PreNode->next;
 	}
 	 InsertNode.next = PreNode->next;
-	 PreNode->next = InsertNode;
+	 PreNode->next = &InsertNode;
+	 return 1;
 }
 
 template<class T>
