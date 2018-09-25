@@ -9,7 +9,7 @@ public:
 	Linear_Linked_List();
 	Linear_Linked_List(int n);
 	~Linear_Linked_List() {DestoryList()};
-	void InitList(int n);
+	void InitList(T firstelem);
 	void DestoryList(); 
 	bool ListEmpty();
 	int ListLength();
