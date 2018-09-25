@@ -8,7 +8,7 @@ class Linear_Linked_List
 public:
 	Linear_Linked_List();
 	Linear_Linked_List(int n);
-	~Linear_Linked_List() {DestoryList()};
+	~Linear_Linked_List();
 	void InitList(T firstelem);
 	void DestoryList(); 
 	bool ListEmpty();
@@ -91,6 +91,19 @@ inline T Linear_Linked_List<T>::GetElem(int location)
 		p = p->next;
 	}
 	return p->data;
+}
+
+template<class T>
+inline int Linear_Linked_List<T>::locateElem(T elem)
+{
+	T *targetNode = head;
+	int location = 1
+	while (targetNode->date != elem&&targetNode->next!=NULL)
+	{
+		targetNode=targetNode->next;
+		location++;
+	}
+	return location;
 }
 
 template<class T>
