@@ -7,7 +7,7 @@ class Linear_Linked_List
 {
 public:
 	Linear_Linked_List();
-	Linear_Linked_List(int n);
+	Linear_Linked_List(T elem);
 	~Linear_Linked_List();
 	void InitList(T firstelem);
 	void DestoryList(); 
@@ -34,9 +34,9 @@ inline Linear_Linked_List<T>::Linear_Linked_List()
 }
 
 template<class T>
-inline Linear_Linked_List<T>::Linear_Linked_List(int n)
+inline Linear_Linked_List<T>::Linear_Linked_List(T elem)
 {
-	InitList(n);
+	InitList(elem);
 }
 
 template<class T>
