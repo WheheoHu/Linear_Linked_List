@@ -8,8 +8,8 @@ class Linear_Linked_List
 public:
 	Linear_Linked_List();
 	Linear_Linked_List(int n);
-	~Linear_Linked_List();
-	void InitList(T firstelem);
+	~Linear_Linked_List() {DestoryList()};
+	void InitList(int n);
 	void DestoryList(); 
 	bool ListEmpty();
 	int ListLength();
