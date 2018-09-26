@@ -119,7 +119,7 @@ inline int Linear_Linked_List<T>::ListInsert(int location, T elem)
 		head = InsertNode;
 		return 1;
 	}
-	if (location>=ListLength())
+	if (location>ListLength())
 	{
 		Node *lastNode = head;
 		for (int  i = 0; i < ListLength()-1; i++)
@@ -130,7 +130,7 @@ inline int Linear_Linked_List<T>::ListInsert(int location, T elem)
 		return 1;
 	}
 	Node *PreNode = head;
-	for (int  i = 0; i < location-1; i++)
+	for (int  i = 0; i < location-2; i++)
 	{
 		PreNode=PreNode->next;
 	}
