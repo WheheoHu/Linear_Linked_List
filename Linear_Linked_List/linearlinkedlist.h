@@ -26,7 +26,19 @@ private:
 		         Node(const T &d) :data(d), next(NULL) {}	
 	};
 	Node * head;
-	Node * find(const int &loctaion);
+	//寻找第location个Node前一个Node的位置！！！！
+	Node * find(const int &location) {
+		Node *locaNode = head;
+		if (location==1)
+		{
+			return locaNode;
+		}
+		for (int i = 0; i < location-2; i++)
+		{
+			locaNode = locaNode->next;
+		}
+		return locaNode;
+	}
 };
 
 template<class T>
@@ -88,12 +100,17 @@ inline int Linear_Linked_List<T>::ListLength()
 template<class T>
 inline T Linear_Linked_List<T>::GetElem(int location)
 {
-	Node *p = head;
+	/*Node *p = head;
 	for (int i = 0; i < (location-1); i++)
 	{
 		p = p->next;
+	}*/
+	Node *p = find(location);
+	if (location==1)
+	{
+		return p->data;
 	}
-	return p->data;
+	return p->next->data;
 }
 
 template<class T>
