@@ -17,6 +17,7 @@ public:
 	int locateElem(T elem);
 	int ListInsert(int location, T elem);
 	int ListDelete(int location, T& elem);
+	int ListDelete(int location);
 
 private:
 	struct Node {
@@ -104,6 +105,11 @@ inline int Linear_Linked_List<T>::locateElem(T elem)
 	{
 		targetNode=targetNode->next;
 		location++;
+
+	}
+	if (targetNode->next==NULL)
+	{
+		return 0;
 	}
 	return location;
 }
@@ -159,6 +165,30 @@ inline int Linear_Linked_List<T>::ListDelete(int location, T & elem)
 	elem = deleteNode->next->data;
 	free(tempNode);
 	deleteNode->next == deleteNode->next->next;
+	return 1;
+}
+
+template<class T>
+inline int Linear_Linked_List<T>::ListDelete(int location)
+{
+	if (ListLength()==0||location<1||location>ListLength())
+	{
+		return 0;
+	}
+	if (location==1)
+	{
+		head = head->next;
+		return 1;
+	}
+	Node *deleteNode = head;
+	for (int i = 0; i < location-2; i++)
+	{
+		deleteNode = deleteNode->next;
+	}
+	Node *tempNode = deleteNode->next;
+	deleteNode->next = deleteNode->next->next;
+	free(tempNode);
+	tempNode = NULL;
 	return 1;
 }
 
